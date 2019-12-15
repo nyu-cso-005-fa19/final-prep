@@ -24,7 +24,7 @@ int main(void) {
   int x1 = 1;
   int x2 = 2;
   pthread_create(&tid1, NULL, &foo, &x1);
-  pthread_create(&tid1, NULL, &foo, &x2);
+  pthread_create(&tid2, NULL, &foo, &x2);
   pthread_join(tid1, NULL);
   pthread_join(tid2, NULL);
   return 0;
