@@ -9,8 +9,8 @@ that you can use for your exam preparation.
 Consider the following C program
 
 ```c
-#include <pthread>
-#include <stdio>
+#include <pthread.h>
+#include <stdio.h>
 
 int y = 0;
 
