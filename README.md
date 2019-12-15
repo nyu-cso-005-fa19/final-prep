@@ -51,6 +51,8 @@ int main(void) {
    
    are omitted?
 
+Assume that both calls to `pthread_create` return 0.
+
 ## Locking
 
 Programmers at the Flaky Computer Cooperation designed the following
@@ -69,25 +71,24 @@ void flaky_lock(flaky_lock_t *lock) {
     do {
       lock->turn = me;
     } while (lock->busy);
-    lock->busy = true;
+    lock->busy = 1;
   } while (lock->turn != me);
 }
 
 void flaky_unlock(flaky_lock_t *lock) {
-    lock->busy = false;
-  }
+  lock->busy = 0;
 }
 ```
 
-* Does this protocol satisfy mutual exclusion?
-* Is this protocol deadlock-free?
-* Is this protocol starvation-free?
+* Does this lock implementation satisfy mutual exclusion?
+* Is this lock implementation deadlock-free?
+* Is this lock implementation starvation-free?
 
 If your answer is 'No' to any of the questions, describe an execution
 that demonstrates why the property does not hold.
 
-You may assume that all assignments to shared memory locations execute
-atomically.
+You may assume that all assignments and accesses to shared memory
+locations execute atomically.
 
 
 ## Linearizability
@@ -148,3 +149,6 @@ Thread A: ----[ read(r)/1 ]------------------------->
 Thread B: ------[ write(r,1) ]-------[ read(r)/1]--->
 Thread C: ---------------[ write(r,2) ]------------->
 ```
+
+If an execution is linearizable, show its linearization. If it is not
+linearizable, explain why.
