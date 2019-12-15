@@ -16,7 +16,7 @@ int y = 0;
 
 void foo(int* x) {
   printf("%d", y);
-  y = &x;
+  y = *x;
 }
 
 int main(void) {
