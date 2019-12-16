@@ -88,7 +88,8 @@ If your answer is 'No' to any of the questions, describe an execution
 that demonstrates why the property does not hold.
 
 You may assume that all assignments and accesses to shared memory
-locations execute atomically.
+locations execute atomically. Further assume that `lock->busy` is
+initialized to `0` before any call to `flaky_lock` is executed.
 
 
 ## Linearizability
