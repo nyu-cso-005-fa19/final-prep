@@ -151,5 +151,13 @@ Thread B: ------[ write(r,1) ]-------[ read(r)/1]--->
 Thread C: ---------------[ write(r,2) ]------------->
 ```
 
+Execution 5:
+
+```
+Thread A: [ read(r)/1 ]----------------------------->
+Thread B: -[ write(r,1) ]--------------[ read(r)/1]->
+Thread C: ---------------[ write(r,2) ]------------->
+```
+
 If an execution is linearizable, show its linearization. If it is not
 linearizable, explain why.
