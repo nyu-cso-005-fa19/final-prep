@@ -14,9 +14,11 @@ Consider the following C program
 
 int y = 0;
 
-void foo(int* x) {
+void* foo(void* x0) {
+  int* x = (int*) x0;
   printf("%d", y);
   y = *x;
+  return NULL;
 }
 
 int main(void) {
